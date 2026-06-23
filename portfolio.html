@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Mahamane THERA | Portfolio</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Version de Lucide fixée et sécurisée pour éviter les attaques de chaîne d'approvisionnement -->
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#0B0F19',
+                        midnight: '#0E131F',
+                        neonCyan: '#00F2FE',
+                        neonTeal: '#05FFC4',
+                        cosmicMagenta: '#FF2A85',
+                        cosmicViolet: '#B026FF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0F19;
+            color: #E2E8F0;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gradient-border-glow:hover {
+            border-image: linear-gradient(135deg, #00F2FE, #B026FF) 1;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15), 0 0 20px rgba(176, 38, 255, 0.15);
+        }
+
+        /* Ambient Cosmic Background Orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+        
+        @keyframes float-slow-1 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes float-slow-2 {
+            0%, 100% { transform: translateY(0px) scale(1.05); }
+            50% { transform: translateY(15px) scale(0.95); }
+        }
+
+        .orb-1 {
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.25) 0%, rgba(0,0,0,0) 70%);
+            animation: float-slow-1 12s infinite ease-in-out;
+        }
+
+        .orb-2 {
+            background: radial-gradient(circle, rgba(176, 38, 255, 0.2) 0%, rgba(0,0,0,0) 70%);
+            animation: float-slow-2 15s infinite ease-in-out;
+        }
+
+        .tech-tag {
+            font-family: 'Fira Code', monospace;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #A0AEC0;
+        }
+
+        /* Hide navigation label text on extra small phone widths to prevent overlapping */
+        @media (max-width: 380px) {
+            .nav-label {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased relative min-h-screen pb-24 lg:pb-0">
+
+    <!-- Global Wrapper to absolutely prevent horizontal scroll on touch devices -->
+    <div class="relative w-full overflow-hidden min-h-screen">
+        
+        <!-- Background Decorative Orbs -->
+        <div class="glow-orb orb-1 w-[260px] h-[260px] md:w-[450px] md:h-[450px] top-10 left-[-10%]"></div>
+        <div class="glow-orb orb-2 w-[280px] h-[280px] md:w-[500px] md:h-[500px] bottom-10 right-[-10%]"></div>
+
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10 flex flex-col lg:flex-row gap-6 lg:gap-8 relative z-10">
+            
+            <!-- Sidebar Profile Block -->
+            <aside class="w-full lg:w-[300px] lg:shrink-0 lg:sticky lg:top-10 lg:h-fit flex flex-col gap-6">
+                <div class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-neonCyan via-neonTeal to-cosmicViolet"></div>
+                    
+                    <!-- Portrait Image Frame -->
+                    <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-[2px] bg-gradient-to-tr from-neonCyan via-transparent to-cosmicViolet mb-3 mt-2 shadow-[0_0_15px_rgba(0,242,254,0.1)]">
+                        <div class="w-full h-full rounded-full bg-midnight overflow-hidden flex items-center justify-center">
+                            <img src="photo/identity_photo.jpeg" alt="Mahamane THERA" class="w-full h-full object-cover object-center" onerror="this.onerror=null;">
+                        </div>
+                        <span class="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 bg-neonTeal rounded-full border-2 border-midnight shadow-[0_0_8px_#05FFC4]"></span>
+                    </div>
+
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white mb-1">Mahamane THERA</h1>
+                    <p class="font-mono text-[10px] sm:text-xs text-neonCyan tracking-widest uppercase mb-3">Systèmes &amp; Réseaux</p>
+                    
+                    <!-- Contact details -->
+                    <div class="w-full space-y-2.5 my-3 pt-3 border-t border-white/5 text-left text-xs sm:text-sm text-slate-300">
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-neonTeal shrink-0"></i>
+                            <span>Bamako, Mali</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 min-w-0">
+                            <i data-lucide="mail" class="w-4 h-4 text-cosmicMagenta shrink-0"></i>
+                            <a href="mailto:theramahamane82@gmail.com" class="truncate hover:text-white transition">theramahamane82@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="phone" class="w-4 h-4 text-neonCyan shrink-0"></i>
+                            <span>(+223) 62 37 46 48</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="github" class="w-4 h-4 text-cosmicViolet shrink-0"></i>
+                            <!-- Sécurisation des liens externes contre le Tab-hijacking -->
+                            <a href="https://github.com/mahamane24" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">mahamane24</a>
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="w-full pt-3 border-t border-white/5 text-left">
+                        <p class="font-mono text-[9px] text-slate-400 uppercase tracking-widest mb-1.5">Langues</p>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="tech-tag text-[9px] px-2 py-0.5 rounded">Français</span>
+                            <span class="tech-tag text-[9px] px-2 py-0.5 rounded">Anglais</span>
+                            <span class="tech-tag text-[9px] px-2 py-0.5 rounded">Bambara</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu (Hidden on mobiles/tablets) -->
+                <nav id="desktop-nav" class="hidden lg:flex flex-col gap-1 glass-panel rounded-xl p-2 border border-white/10">
+                    <a href="#about" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white transition group">
+                        <i data-lucide="user" class="w-4.5 h-4.5 group-hover:text-neonCyan transition"></i>
+                        <span class="text-xs font-semibold">À Propos</span>
+                    </a>
+                    <a href="#projects" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white transition group">
+                        <i data-lucide="terminal" class="w-4.5 h-4.5 group-hover:text-cosmicMagenta transition"></i>
+                        <span class="text-xs font-semibold">Projets</span>
+                    </a>
+                    <a href="#skills" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white transition group">
+                        <i data-lucide="cpu" class="w-4.5 h-4.5 group-hover:text-neonTeal transition"></i>
+                        <span class="text-xs font-semibold">Compétences</span>
+                    </a>
+                    <a href="#certifications" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white transition group">
+                        <i data-lucide="award" class="w-4.5 h-4.5 group-hover:text-cosmicViolet transition"></i>
+                        <span class="text-xs font-semibold">Certificats</span>
+                    </a>
+                    <a href="#contact" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white transition group">
+                        <i data-lucide="send" class="w-4.5 h-4.5 group-hover:text-neonCyan transition"></i>
+                        <span class="text-xs font-semibold">Contact</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Panel -->
+            <main class="flex-1 space-y-6 sm:space-y-8 lg:space-y-10">
+                
+                <!-- About Section -->
+                <section id="about" class="glass-panel rounded-2xl p-5 sm:p-8 relative overflow-hidden flex flex-col justify-between gap-6 scroll-mt-6 lg:scroll-mt-10">
+                    <div class="space-y-3.5">
+                        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-neonCyan/10 border border-neonCyan/20 text-neonCyan font-mono text-[9px] sm:text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neonCyan animate-ping"></span>
+                            Disponible pour opportunités
+                        </div>
+                        <h2 class="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                            Étudiant en Ingénierie <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonCyan via-neonTeal to-cosmicViolet">
+                                Systèmes, Réseaux &amp; Sécurité
+                            </span>
+                        </h2>
+                        <p class="text-slate-300 leading-relaxed text-xs sm:text-sm md:text-base">
+                            Actuellement étudiant en Ingénierie des Systèmes et Réseaux à <strong class="text-white">Sup'Management</strong> (2023–2026), je me spécialise dans l'administration et la sécurisation des infrastructures informatiques. Passionné par Linux, la cybersécurité et les architectures réseaux, je m'intéresse également à l'intelligence artificielle, notamment au développement de chatbots inspirés de ChatGPT et Gemini, ainsi qu'au développement front-end.
+
+                        </p>
+                    </div>
+
+                    <!-- Compact Info Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-5 border-t border-white/5">
+                        <div class="p-3 rounded-lg bg-midnight/50 border border-white/5 flex items-center gap-3">
+                            <div class="p-1.5 rounded bg-neonCyan/10 text-neonCyan shrink-0">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[8px] text-slate-400 font-mono">CURSUS</p>
+                                <p class="text-xs font-bold text-white">BAC+3 (3ISR)</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-midnight/50 border border-white/5 flex items-center gap-3">
+                            <div class="p-1.5 rounded bg-cosmicMagenta/10 text-cosmicMagenta shrink-0">
+                                <i data-lucide="folder-git-2" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[8px] text-slate-400 font-mono">RÉALISATIONS</p>
+                                <p class="text-xs font-bold text-white">4 Projets Clés</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-midnight/50 border border-white/5 flex items-center gap-3">
+                            <div class="p-1.5 rounded bg-neonTeal/10 text-neonTeal shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[8px] text-slate-400 font-mono">SÉCURITÉ</p>
+                                <p class="text-xs font-bold text-white">Kali &amp; Cisco</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Grid -->
+                <section id="projects" class="space-y-4 scroll-mt-6 lg:scroll-mt-10">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">Projets Académiques</h2>
+                            <p class="text-[10px] sm:text-xs font-mono text-slate-400">Travaux récents et implémentations pratiques</p>
+                        </div>
+                        <i data-lucide="terminal" class="w-5 h-5 text-cosmicMagenta"></i>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Project 1 -->
+                        <div class="glass-panel rounded-xl p-4 sm:p-5 flex flex-col justify-between border border-white/10 group gradient-border-glow hover:-translate-y-1 duration-300">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-start gap-2">
+                                    <span class="font-mono text-[10px] text-neonCyan">2026</span>
+                                    <div class="flex gap-1 flex-wrap justify-end">
+                                        <span class="tech-tag text-[8px] px-1.5 py-0.5 rounded">Python</span>
+                                        <span class="tech-tag text-[8px] px-1.5 py-0.5 rounded">Socket.IO</span>
+                                    </div>
+                                </div>
+                                <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-neonCyan transition">Mini Chat Socket</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Messagerie asynchrone bidirectionnelle en temps réel avec authentification sécurisée, structurée autour de Flask et du protocole WebSocket.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+                                <span class="text-[10px] text-slate-400">Flask Back-end</span>
+                                <span class="flex items-center gap-1 text-neonCyan font-mono text-[10px]">Code <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="glass-panel rounded-xl p-4 sm:p-5 flex flex-col justify-between border border-white/10 group gradient-border-glow hover:-translate-y-1 duration-300">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-start gap-2">
+                                    <span class="font-mono text-[10px] text-cosmicMagenta">2026</span>
+                                    <div class="flex gap-1 flex-wrap justify-end">
+                                        <span class="tech-tag text-[8px] px-1.5 py-0.5 rounded">Cisco</span>
+                                        <span class="tech-tag text-[8px] px-1.5 py-0.5 rounded">VLAN</span>
+                                    </div>
+                                </div>
+                                <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-cosmicMagenta transition">Architecture Réseau Cisco</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Modélisation et sécurisation d'un LAN (routage inter-VLAN, adressage IP, protocoles de routage statiques et dynamiques, accès distant SSH).
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+                                <span class="text-[10px] text-slate-400">Packet Tracer</span>
+                                <span class="flex items-center gap-1 text-cosmicMagenta font-mono text-[10px]">Schéma <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="glass-panel rounded-xl p-4 sm:p-5 flex flex-col justify-between border border-white/10 group gradient-border-glow hover:-translate-y-1 duration-300">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-start gap-2">
+                                    <span class="font-mono text-[10px] text-neonTeal">2026</span>
+                                    <div class="flex gap-1 flex-wrap justify-end">
+                                        <span class="tech-tag text-[8px] px-1.5 py-0.5 rounded">Arduino</span>
+                                        <span class="tech-tag text-[8px] px-1.5 py-0.5 rounded">ESP32</span>
+                                    </div>
+                                </div>
+                                <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-neonTeal transition">Sécurité IoT ESP32</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Système d'alarme automatisé combinant capteurs thermiques et de mouvement avec alertes réseau envoyées en temps réel.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+                                <span class="text-[10px] text-slate-400">Embarqué IoT</span>
+                                <span class="flex items-center gap-1 text-neonTeal font-mono text-[10px]">Projet <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div class="glass-panel rounded-xl p-4 sm:p-5 flex flex-col justify-between border border-white/10 group gradient-border-glow hover:-translate-y-1 duration-300">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-start gap-2">
+                                    <span class="font-mono text-[10px] text-cosmicViolet">2025</span>
+                                    <div class="flex gap-1 flex-wrap justify-end">
+                                        <span class="tech-tag text-[8px] px-1.5 py-0.5 rounded">HTML/CSS</span>
+                                        <span class="tech-tag text-[8px] px-1.5 py-0.5 rounded">JS</span>
+                                    </div>
+                                </div>
+                                <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-cosmicViolet transition">Portail Produits Avicoles</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Plateforme vitrine moderne avec design adaptatif pour terminaux mobiles et ordinateurs, développée à des fins commerciales locales.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-xs">
+                                <span class="text-[10px] text-slate-400">Web App</span>
+                                <span class="flex items-center gap-1 text-cosmicViolet font-mono text-[10px]">Démo <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tools & Skills -->
+                <section id="skills" class="space-y-4 scroll-mt-6 lg:scroll-mt-10">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">Outils &amp; Environnements</h2>
+                            <p class="text-[10px] sm:text-xs font-mono text-slate-400">Domaines d'expertise technique</p>
+                        </div>
+                        <i data-lucide="cpu" class="w-5 h-5 text-neonTeal"></i>
+                    </div>
+
+                    <!-- Skills Grid adapted for small screens -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <!-- Linux Card -->
+                        <div class="glass-panel rounded-xl p-3 sm:p-4 flex flex-col items-center justify-center text-center border border-white/10 hover:border-neonCyan hover:-translate-y-1 duration-300 group">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-midnight flex items-center justify-center mb-2.5 group-hover:scale-105 duration-300">
+                                <i data-lucide="terminal" class="w-5 h-5 sm:w-6 sm:h-6 text-neonCyan"></i>
+                            </div>
+                            <p class="text-xs font-bold text-white">Kali &amp; Ubuntu</p>
+                            <p class="text-[9px] font-mono text-slate-400 mt-0.5">Admin &amp; Sécurité</p>
+                        </div>
+
+                        <!-- Cisco Card -->
+                        <div class="glass-panel rounded-xl p-3 sm:p-4 flex flex-col items-center justify-center text-center border border-white/10 hover:border-cosmicMagenta hover:-translate-y-1 duration-300 group">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-midnight flex items-center justify-center mb-2.5 group-hover:scale-105 duration-300">
+                                <i data-lucide="network" class="w-5 h-5 sm:w-6 sm:h-6 text-cosmicMagenta"></i>
+                            </div>
+                            <p class="text-xs font-bold text-white">Packet Tracer</p>
+                            <p class="text-[9px] font-mono text-slate-400 mt-0.5">VLAN &amp; Routage</p>
+                        </div>
+
+                        <!-- Dev Card -->
+                        <div class="glass-panel rounded-xl p-3 sm:p-4 flex flex-col items-center justify-center text-center border border-white/10 hover:border-neonTeal hover:-translate-y-1 duration-300 group">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-midnight flex items-center justify-center mb-2.5 group-hover:scale-105 duration-300">
+                                <i data-lucide="code-2" class="w-5 h-5 sm:w-6 sm:h-6 text-neonTeal"></i>
+                            </div>
+                            <p class="text-xs font-bold text-white">Frontend Dev</p>
+                            <p class="text-[9px] font-mono text-slate-400 mt-0.5">HTML / CSS / JS</p>
+                        </div>
+
+                        <!-- Version Card -->
+                        <div class="glass-panel rounded-xl p-3 sm:p-4 flex flex-col items-center justify-center text-center border border-white/10 hover:border-cosmicViolet hover:-translate-y-1 duration-300 group">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-midnight flex items-center justify-center mb-2.5 group-hover:scale-105 duration-300">
+                                <i data-lucide="git-branch" class="w-5 h-5 sm:w-6 sm:h-6 text-cosmicViolet"></i>
+                            </div>
+                            <p class="text-xs font-bold text-white">Git &amp; GitHub</p>
+                            <p class="text-[9px] font-mono text-slate-400 mt-0.5">Versionnement</p>
+                        </div>
+                    </div>
+
+                    <!-- Interest Badges -->
+                    <div class="glass-panel rounded-xl p-3.5 flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between border border-white/10 text-xs">
+                        <span class="font-mono text-slate-400 uppercase tracking-wider text-[9px] sm:text-xs">Champs de curiosité :</span>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="tech-tag px-2 py-0.5 rounded text-[9px]">IoT &amp; Arduino</span>
+                            <span class="tech-tag px-2 py-0.5 rounded text-[9px]">Cybersécurité</span>
+                            <span class="tech-tag px-2 py-0.5 rounded text-[9px]">Réseaux locaux</span>
+                            <span class="tech-tag px-2 py-0.5 rounded text-[9px]">Basketball</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Certifications & Formation Timeline -->
+                <section id="certifications" class="grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-6 lg:scroll-mt-10">
+                    <!-- Certifications list -->
+                    <div class="space-y-3.5">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="award" class="w-4.5 h-4.5 text-neonCyan"></i>
+                            <h2 class="text-base sm:text-lg font-bold text-white">Certifications</h2>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <div class="glass-panel rounded-xl p-3.5 border border-white/5 flex items-start gap-3 hover:border-neonCyan/30 duration-300">
+                                <div class="px-2 py-1 rounded bg-neonCyan/10 text-neonCyan font-mono text-[9px] font-bold">2026</div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs sm:text-sm font-semibold text-white truncate">Formation Dev Frontend</h4>
+                                    <p class="text-[10px] sm:text-xs text-slate-400 truncate">Udemy (HTML, CSS, JavaScript)</p>
+                                </div>
+                            </div>
+
+                            <div class="glass-panel rounded-xl p-3.5 border border-white/5 flex items-start gap-3 hover:border-neonTeal/30 duration-300">
+                                <div class="px-2 py-1 rounded bg-neonTeal/10 text-neonTeal font-mono text-[9px] font-bold">2025</div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs sm:text-sm font-semibold text-white truncate">Introduction to Kali Linux</h4>
+                                    <p class="text-[10px] sm:text-xs text-slate-400 truncate">Simplylearn</p>
+                                </div>
+                            </div>
+
+                            <div class="glass-panel rounded-xl p-3.5 border border-white/5 flex items-start gap-3 hover:border-cosmicViolet/30 duration-300">
+                                <div class="px-2 py-1 rounded bg-cosmicViolet/10 text-cosmicViolet font-mono text-[9px] font-bold">2025</div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs sm:text-sm font-semibold text-white truncate">CCNA 1</h4>
+                                    <p class="text-[10px] sm:text-xs text-slate-400 truncate">Cisco Networking Academy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education timeline -->
+                    <div class="space-y-3.5">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="graduation-cap" class="w-4.5 h-4.5 text-cosmicMagenta"></i>
+                            <h2 class="text-base sm:text-lg font-bold text-white">Cursus</h2>
+                        </div>
+
+                        <div class="space-y-3.5 relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-[1px] before:bg-white/10">
+                            <div class="relative pl-8 group">
+                                <span class="absolute left-2 top-1 w-3 h-3 rounded-full bg-midnight border-2 border-neonCyan flex items-center justify-center group-hover:border-neonCyan duration-300">
+                                    <span class="w-1 h-1 bg-neonCyan rounded-full"></span>
+                                </span>
+                                <span class="font-mono text-[9px] text-neonCyan block mb-0.5">2023 - 2026</span>
+                                <h4 class="text-xs sm:text-sm font-semibold text-white">Ingénierie Systèmes &amp; Réseaux (3ISR)</h4>
+                                <p class="text-[10px] sm:text-xs text-slate-400">Sup'Management, Mali</p>
+                            </div>
+
+                            <div class="relative pl-8 group">
+                                <span class="absolute left-2 top-1 w-3 h-3 rounded-full bg-midnight border-2 border-cosmicMagenta flex items-center justify-center group-hover:border-cosmicMagenta duration-300">
+                                    <span class="w-1 h-1 bg-cosmicMagenta rounded-full"></span>
+                                </span>
+                                <span class="font-mono text-[9px] text-cosmicMagenta block mb-0.5">2022 - 2023</span>
+                                <h4 class="text-xs sm:text-sm font-semibold text-white">Baccalauréat Scientifique</h4>
+                                <p class="text-[10px] sm:text-xs text-slate-400">Études Secondaires Nationales</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact form -->
+                <section id="contact" class="glass-panel rounded-2xl p-5 sm:p-8 border border-white/10 space-y-5 relative overflow-hidden scroll-mt-6 lg:scroll-mt-10">
+                    <div class="space-y-1">
+                        <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">Me Contacter</h2>
+                        <p class="text-[10px] sm:text-xs font-mono text-slate-400">Laissez-moi un message pour échanger</p>
+                    </div>
+
+                    <!-- L'action utilise votre clé masquée de sécurité -->
+                    <form action="https://formsubmit.co/643698c934d7ed322391874b5e4d6b62" method="POST" class="space-y-4 text-xs sm:text-sm">
+                        
+                        <!-- FormSubmit Configuration Inputs -->
+                        <input type="hidden" name="_subject" value="Nouveau message depuis votre Portfolio !">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <!-- Champ HoneyPot (Masqué pour piéger les spambots automatiques) -->
+                        <input type="text" name="_honey" style="display:none">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label for="name" class="font-mono text-[9px] text-slate-400 uppercase tracking-wider">Nom complet</label>
+                                <input type="text" id="name" name="name" required class="w-full bg-midnight/40 border-b border-white/15 focus:border-neonCyan focus:ring-0 outline-none px-1 py-1.5 text-white transition placeholder-white/15" placeholder="Votre nom">
+                            </div>
+                            <div class="space-y-1">
+                                <label for="email" class="font-mono text-[9px] text-slate-400 uppercase tracking-wider">E-mail</label>
+                                <input type="email" id="email" name="email" required class="w-full bg-midnight/40 border-b border-white/15 focus:border-neonCyan focus:ring-0 outline-none px-1 py-1.5 text-white transition placeholder-white/15" placeholder="Votre adresse email">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label for="message" class="font-mono text-[9px] text-slate-400 uppercase tracking-wider">Votre message</label>
+                            <textarea id="message" name="message" required rows="3" class="w-full bg-midnight/40 border-b border-white/15 focus:border-neonCyan focus:ring-0 outline-none px-1 py-1.5 text-white transition placeholder-white/15" placeholder="Votre texte ici..."></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3.5 items-start sm:items-center justify-between pt-1">
+                            <p class="text-[10px] text-slate-400">Le message sera transmis directement à votre boîte mail.</p>
+                            <button type="submit" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2 rounded-lg bg-gradient-to-r from-neonCyan to-cosmicViolet text-white font-semibold text-xs tracking-wider uppercase hover:opacity-95 shadow-[0_4px_12px_rgba(0,242,254,0.15)] hover:shadow-[0_4px_18px_rgba(176,38,255,0.25)] transition duration-300">
+                                Envoyer le message
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+
+        <!-- Mobile Bottom Navigation Bar (Hidden on Desktop) -->
+        <nav id="mobile-nav" class="lg:hidden fixed bottom-4 left-4 right-4 z-50 glass-panel rounded-xl p-1.5 flex justify-around items-center border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+            <a href="#about" class="nav-item flex flex-col items-center gap-0.5 p-1.5 text-slate-400 hover:text-neonCyan transition">
+                <i data-lucide="user" class="w-4.5 h-4.5"></i>
+                <span class="nav-label text-[9px] font-mono">Profil</span>
+            </a>
+            <a href="#projects" class="nav-item flex flex-col items-center gap-0.5 p-1.5 text-slate-400 hover:text-cosmicMagenta transition">
+                <i data-lucide="terminal" class="w-4.5 h-4.5"></i>
+                <span class="nav-label text-[9px] font-mono">Projets</span>
+            </a>
+            <a href="#skills" class="nav-item flex flex-col items-center gap-0.5 p-1.5 text-slate-400 hover:text-neonTeal transition">
+                <i data-lucide="cpu" class="w-4.5 h-4.5"></i>
+                <span class="nav-label text-[9px] font-mono">Tech</span>
+            </a>
+            <a href="#certifications" class="nav-item flex flex-col items-center gap-0.5 p-1.5 text-slate-400 hover:text-cosmicViolet transition">
+                <i data-lucide="award" class="w-4.5 h-4.5"></i>
+                <span class="nav-label text-[9px] font-mono">Certifs</span>
+            </a>
+            <a href="#contact" class="nav-item flex flex-col items-center gap-0.5 p-1.5 text-slate-400 hover:text-neonCyan transition">
+                <i data-lucide="send" class="w-4.5 h-4.5"></i>
+                <span class="nav-label text-[9px] font-mono">Contact</span>
+            </a>
+        </nav>
+
+        <!-- Footer -->
+        <footer class="w-full text-center py-6 text-[9px] sm:text-[10px] text-slate-500 font-mono border-t border-white/5 bg-obsidian/95">
+            <p>&copy; 2026 Mahamane THERA. Conception Cyber-Cosmic. Tous droits réservés.</p>
+        </footer>
+
+    </div>
+
+    <!-- Initialize Lucide Icons & Intersection Observer -->
+    <script>
+        lucide.createIcons();
+
+        // Highlight active navigation link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const desktopLinks = document.querySelectorAll('#desktop-nav .nav-item');
+        const mobileLinks = document.querySelectorAll('#mobile-nav .nav-item');
+
+        const activeClasses = ['text-neonCyan', 'bg-white/5'];
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px', // Target active element near top-middle viewport
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Update Desktop active classes
+                    desktopLinks.forEach(link => {
+                        const href = link.getAttribute('href').substring(1);
+                        if (href === id) {
+                            link.classList.add(...activeClasses);
+                            link.classList.remove('text-slate-400');
+                        } else {
+                            link.classList.remove(...activeClasses);
+                            link.classList.add('text-slate-400');
+                        }
+                    });
+
+                    // Update Mobile active classes
+                    mobileLinks.forEach(link => {
+                        const href = link.getAttribute('href').substring(1);
+                        if (href === id) {
+                            link.classList.add('text-neonCyan');
+                            link.classList.remove('text-slate-400');
+                        } else {
+                            link.classList.remove('text-neonCyan');
+                            link.classList.add('text-slate-400');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
